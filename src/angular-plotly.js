@@ -7,7 +7,7 @@
         template: '<div></div>',
         scope: {
           data: '=',
-          layout: '=',
+          graphLayout: '=',
           options: '='
         },
         link: function(scope, element) {
@@ -18,14 +18,14 @@
               return;
             else
               initialized = true;
-            Plotly.newPlot(element, scope.data, scope.layout, scope.options);
+            Plotly.newPlot(element, scope.data, scope.graphLayout, scope.options);
           }
 
           scope.$watch(function() {
-            return [scope.layout, scope.data];
+            return [scope.graphLayout, scope.data];
           }, function() {
             init();
-            element.layout = scope.layout;
+            element.graphLayout = scope.graphLayout;
             element.data = scope.data;
             Plotly.redraw(element);
           }, true);
